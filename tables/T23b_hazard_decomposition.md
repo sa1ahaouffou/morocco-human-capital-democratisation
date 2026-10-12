@@ -1,0 +1,11 @@
+**Table 23b. Decomposing Morocco's structural hazard: contributions to the log-odds gap between Morocco (2025) and the average non-monarchical autocracy-year 2016–2025 (model 3)**
+
+| Component                                  |   Morocco |   Average 2016–25 |   Contribution to log-odds gap |
+|:-------------------------------------------|----------:|------------------:|-------------------------------:|
+| log GDP pc                                 |     9.036 |             8.649 |                         -0.063 |
+| Mean years, 20–39                          |     8.836 |             8.703 |                          0.039 |
+| Mean years, 40–64                          |     4.832 |             7.008 |                          0.372 |
+| Closed autocracy (no multiparty elections) |     1.000 |             0.203 |                         -1.309 |
+| % democracies in region                    |     5.000 |            40.211 |                         -0.480 |
+| log spell duration                         |     4.174 |             3.334 |                         -0.308 |
+| Trend (decades)                            |     2.500 |             2.068 |                          0.011 |

@@ -1,0 +1,20 @@
+**Table 15. When did each country's schooling revolution happen? First birth cohort to reach each threshold (attainment observed at age 30–34; cohorts born 1918–1993; WCDE v3.3)**
+
+| Country     | No schooling < 25%   | ≥ lower sec. ≥ 50%   | Women: ≥ lower sec. ≥ 50%   | ≥ upper sec. ≥ 50%   | Lag vs Morocco (yrs)   |
+|:------------|:---------------------|:---------------------|:----------------------------|:---------------------|:-----------------------|
+| Morocco     | 1987                 | 1992                 | not yet (49%)               | not yet (35%)        | 0                      |
+| South Korea | 1935                 | 1942                 | 1947                        | 1951                 | 50                     |
+| Taiwan      | 1925                 | 1948                 | 1952                        | 1956                 | 44                     |
+| Japan       | <1918                | <1918                | <1918                       | <1918                | >74                    |
+| Spain       | <1918                | 1944                 | 1946                        | 1963                 | 49                     |
+| Portugal    | 1941                 | 1964                 | 1962                        | 1976                 | 28                     |
+| Tunisia     | 1966                 | 1977                 | 1979                        | 1986                 | 15                     |
+| Turkey      | 1937                 | 1963                 | 1971                        | 1980                 | 29                     |
+| Algeria     | 1967                 | 1966                 | 1970                        | 1982                 | 26                     |
+| Egypt       | 1979                 | 1969                 | 1975                        | 1972                 | 23                     |
+| Jordan      | 1942                 | 1947                 | 1947                        | 1957                 | 45                     |
+| Iran        | 1962                 | 1969                 | 1974                        | 1981                 | 23                     |
+| Indonesia   | 1947                 | 1969                 | 1973                        | 1986                 | 23                     |
+| Vietnam     | 1927                 | 1957                 | 1978                        | 1993                 | 35                     |
+| Brazil      | 1943                 | 1964                 | 1962                        | 1980                 | 28                     |
+| Bhutan      | 1990                 | 1986                 | 1987                        | not yet (30%)        | 6                      |

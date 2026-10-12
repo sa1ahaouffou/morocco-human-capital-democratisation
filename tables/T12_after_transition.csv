@@ -1,0 +1,13 @@
+Outcome,Regressors,Mean yrs school at T,log GDP pc at T,% no schooling at T,N,Fit (R2 / pseudo-R2)
+Survived 10 years (logit),mys,+0.0149 (p=0.823),,,109,0.00034935698464944043
+Survived 10 years (logit),lgdp,,+0.3645 (p=0.109),,105,0.019010604616247706
+Survived 10 years (logit),mys + lgdp,-0.0915 (p=0.365),+0.6248 (p=0.069),,100,0.029263970455292276
+Survived 10 years (logit),lu,,,-0.0093 (p=0.282),95,0.009545551086167836
+"Electoral democracy, mean T+1..T+10 (OLS)",mys,+0.0127 (p=0.003),,,113,0.06569228403085359
+"Electoral democracy, mean T+1..T+10 (OLS)",lgdp,,+0.0622 (p=0.000),,109,0.1402808779371063
+"Electoral democracy, mean T+1..T+10 (OLS)",mys + lgdp,+0.0011 (p=0.875),+0.0639 (p=0.016),,104,0.15680472972897974
+"Electoral democracy, mean T+1..T+10 (OLS)",lu,,,-0.0017 (p=0.002),96,0.07025413727945429
+"Liberal democracy, mean T+1..T+10 (OLS)",mys,+0.0153 (p=0.002),,,113,0.08083438572777835
+"Liberal democracy, mean T+1..T+10 (OLS)",lgdp,,+0.0752 (p=0.000),,109,0.16703900516120118
+"Liberal democracy, mean T+1..T+10 (OLS)",mys + lgdp,+0.0006 (p=0.937),+0.0777 (p=0.006),,104,0.18403885480766624
+"Liberal democracy, mean T+1..T+10 (OLS)",lu,,,-0.0020 (p=0.001),96,0.08322016682533029

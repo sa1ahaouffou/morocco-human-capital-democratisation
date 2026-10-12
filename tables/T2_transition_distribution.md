@@ -1,0 +1,7 @@
+**Table 2. Conditions at the moment of democratic transition, 1960-2025 (V-Dem Regimes of the World), and Morocco's position today**
+
+| Variable                                 |   N |     p10 |     p25 |   Median |     p75 |      p90 |   Morocco today |   Morocco percentile |
+|:-----------------------------------------|----:|--------:|--------:|---------:|--------:|---------:|----------------:|---------------------:|
+| GDP pc at transition (2011 int$)         | 120 | 1266.60 | 2064.71 |  5537.18 | 9741.96 | 13310.64 |         8400.13 |                67.50 |
+| Mean years of schooling at transition    | 127 |    2.57 |    4.59 |     6.34 |    9.41 |    11.04 |            6.20 |                45.67 |
+| % adults with no schooling at transition |  96 |    1.03 |    3.49 |    13.73 |   30.39 |    65.66 |           42.40 |                81.25 |

@@ -1,0 +1,10 @@
+**Table 24. A demographic-educational model of democracy (in the spirit of Lutz, Crespo Cuaresma & Abbasi-Shavazi 2010): 5-yearly pooled panel 1970–2025 with year effects; SEs clustered by country**
+
+| Variable                       | (1) OLS, index    | (2) OLS, index, mean years   | (3) Logit, P(democracy)   |
+|:-------------------------------|:------------------|:-----------------------------|:--------------------------|
+| % ≥ lower secondary, 25+       | 0.001 (0.001)     |                              | 0.004 (0.007)             |
+| Mean years, 25+                |                   | 0.026*** (0.006)             |                           |
+| Male − female gap, % ≥ primary | -0.006*** (0.001) | -0.005*** (0.001)            | -0.070*** (0.017)         |
+| Youth share (15–24 / 15+)      | -0.011*** (0.003) | -0.007*** (0.003)            | -0.082*** (0.027)         |
+| N                              | 1926              | 1926                         | 1926                      |
+| R² / pseudo-R²                 | 0.376             | 0.401                        | 0.229                     |

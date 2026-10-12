@@ -1,0 +1,62 @@
+Two licences apply to this repository.
+
+================================================================================
+1. THE CODE (everything in code/) — MIT Licence
+================================================================================
+
+Copyright (c) 2026 Aouffou Salaheddine
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+2. THE DATA, TABLES, FIGURES AND WRITE-UPS (data/, tables/, figures/, notes/,
+   release/) — Creative Commons Attribution-ShareAlike 4.0 International
+================================================================================
+
+Copyright (c) 2026 Aouffou Salaheddine, except where a third party holds it.
+
+These materials are licensed under CC BY-SA 4.0:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+ShareAlike is not a preference. These outputs contain variables derived from
+V-Dem, which is published under CC BY-SA 4.0, and that licence requires
+derivative datasets to carry the same terms.
+
+Attribution for reuse:
+  Salaheddine, A. (2026). "Two Electorates and One Unelected Executive:
+  cohorts, human capital and the prospects for a parliamentary monarchy in
+  Morocco." Cite the original data providers as well — see
+  release/SOURCES_AND_LICENSES.md.
+
+================================================================================
+3. WHAT IS NOT COVERED
+================================================================================
+
+Nothing here relicenses third-party data. Provider terms continue to apply to
+the raw files that code/01_fetch.py and code/09_fetch_extended.py download, and
+those files are not distributed with this repository (see .gitignore):
+
+  - Afrobarometer Round 9 respondent-level data are copyrighted and may not be
+    redistributed. The code downloads them from afrobarometer.org; only
+    weighted aggregates appear in tables/.
+  - The Wittgenstein Centre Human Capital Data Explorer declares no licence.
+    Only derived aggregates are published here, with citation.
+  - World Bank (WDI, EdStats, HCI), the Maddison Project 2023 and Our World in
+    Data's own processing are CC BY 4.0.
+  - Barro-Lee v3 states no explicit licence; citation is required.

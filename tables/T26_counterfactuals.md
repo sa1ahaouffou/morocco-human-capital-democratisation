@@ -1,0 +1,10 @@
+**Table 26. Exact counterfactuals on V-Dem's aggregation formula: what a parliamentary monarchy would score (Morocco's multiparty 3.38 and free-and-fair 2.14 election indicators already clear RoW's threshold of 2)**
+
+| Scenario                                                                         |   Electoral democracy index | RoW category                |
+|:---------------------------------------------------------------------------------|----------------------------:|:----------------------------|
+| Observed (2025)                                                                  |                       0.260 | Closed autocracy (as coded) |
+| 1. Chief executive accountable to the elected parliament (elected officials = 1) |                       0.395 | Electoral autocracy         |
+| 2. + clean elections at the median transition                                    |                       0.435 | Electoral autocracy         |
+| 3. + association and expression at the median transition                         |                       0.588 | Electoral democracy         |
+| Alt. 2. + all three at the income-and-schooling prediction                       |                       0.404 | Electoral autocracy         |
+| Alt. 3. + a uniform +0.118 on the three freedoms (just reaches 0.5)              |                       0.500 | Electoral democracy         |

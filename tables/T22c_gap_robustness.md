@@ -1,0 +1,10 @@
+**Table 22c. Robustness of the generational-gap effect on the hazard of democratic transition (non-monarchical autocracies, 1961–2025)**
+
+| Specification                                      |   Gap coefficient (log-odds) |    SE |     p |   Odds ratio |   At-risk years |   Transitions |
+|:---------------------------------------------------|-----------------------------:|------:|------:|-------------:|----------------:|--------------:|
+| Baseline (model 4)                                 |                        0.239 | 0.092 | 0.009 |        1.270 |            5146 |           117 |
+| Decade fixed effects                               |                        0.120 | 0.107 | 0.262 |        1.127 |            5146 |           117 |
+| Region fixed effects                               |                        0.286 | 0.101 | 0.005 |        1.331 |            5146 |           117 |
+| Excluding sub-Saharan Africa                       |                        0.289 | 0.124 | 0.020 |        1.335 |            3022 |            78 |
+| 1990–2025 only                                     |                        0.028 | 0.120 | 0.813 |        1.029 |            2498 |            93 |
+| Gap measured in % no schooling (40–64 minus 20–39) |                       -0.001 | 0.013 | 0.949 |        0.999 |            5146 |           117 |

@@ -1,0 +1,10 @@
+Outcome,Regressors,log GDP pc,Mean yrs school,N,R2
+Liberal democracy index,lgdp,+0.1237 (+8.9),,74,0.5038024368444359
+Liberal democracy index,mys,,+0.0399 (+7.1),74,0.37434568231994225
+Liberal democracy index,lgdp + mys,+0.1283 (+4.2),-0.0020 (-0.2),74,0.5040188780400255
+Rule of law,lgdp,+0.1412 (+8.0),,74,0.47943067322694266
+Rule of law,mys,,+0.0484 (+6.0),74,0.401804502461124
+Rule of law,lgdp + mys,+0.1189 (+3.3),+0.0096 (+0.6),74,0.48319132553096955
+Political corruption (higher=worse),lgdp,-0.1927 (-8.8),,74,0.5174815299268389
+Political corruption (higher=worse),mys,,-0.0669 (-6.2),74,0.44437194324974894
+Political corruption (higher=worse),lgdp + mys,-0.1544 (-3.9),-0.0164 (-0.9),74,0.5239103683214583

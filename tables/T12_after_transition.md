@@ -1,0 +1,16 @@
+**Table 12. What schooling at the moment of transition predicts: survival vs democracy level (transitions 1960-2025)**
+
+| Outcome                                   | Regressors   | Mean yrs school at T   | log GDP pc at T   | % no schooling at T   |   N |   Fit (R2 / pseudo-R2) |
+|:------------------------------------------|:-------------|:-----------------------|:------------------|:----------------------|----:|-----------------------:|
+| Survived 10 years (logit)                 | mys          | +0.0149 (p=0.823)      |                   |                       | 109 |                  0.000 |
+| Survived 10 years (logit)                 | lgdp         |                        | +0.3645 (p=0.109) |                       | 105 |                  0.019 |
+| Survived 10 years (logit)                 | mys + lgdp   | -0.0915 (p=0.365)      | +0.6248 (p=0.069) |                       | 100 |                  0.029 |
+| Survived 10 years (logit)                 | lu           |                        |                   | -0.0093 (p=0.282)     |  95 |                  0.010 |
+| Electoral democracy, mean T+1..T+10 (OLS) | mys          | +0.0127 (p=0.003)      |                   |                       | 113 |                  0.066 |
+| Electoral democracy, mean T+1..T+10 (OLS) | lgdp         |                        | +0.0622 (p=0.000) |                       | 109 |                  0.140 |
+| Electoral democracy, mean T+1..T+10 (OLS) | mys + lgdp   | +0.0011 (p=0.875)      | +0.0639 (p=0.016) |                       | 104 |                  0.157 |
+| Electoral democracy, mean T+1..T+10 (OLS) | lu           |                        |                   | -0.0017 (p=0.002)     |  96 |                  0.070 |
+| Liberal democracy, mean T+1..T+10 (OLS)   | mys          | +0.0153 (p=0.002)      |                   |                       | 113 |                  0.081 |
+| Liberal democracy, mean T+1..T+10 (OLS)   | lgdp         |                        | +0.0752 (p=0.000) |                       | 109 |                  0.167 |
+| Liberal democracy, mean T+1..T+10 (OLS)   | mys + lgdp   | +0.0006 (p=0.937)      | +0.0777 (p=0.006) |                       | 104 |                  0.184 |
+| Liberal democracy, mean T+1..T+10 (OLS)   | lu           |                        |                   | -0.0020 (p=0.001)     |  96 |                  0.083 |

@@ -1,0 +1,8 @@
+Source,Age group,Year,Mean years,% no schooling,citation,url
+Barro-Lee v3,25–64,2015,5.11,42.4,"Barro & Lee (2013), v3 2021 update",https://barrolee.github.io/BarroLeeDataSet/
+UNESCO UIS,25+,2017,4.94,,"UIS indicator MYS.1T8.AG25T99, Feb-2026 release; latest Moroccan observation",https://api.uis.unesco.org/api/public/documentation
+UNDP HDR,25+,2023,6.2,,"UNDP Human Development Report, via Our World in Data",https://ourworldindata.org/grapher/average-years-of-schooling
+"HCP, RGPH census",25+,2024,6.3,,"HCP, RGPH 2024 principal results (17 Dec 2024)",https://www.hcp.ma/downloads/RGPH-2024_t22752.html
+Wittgenstein v3,25+,2015,4.64,46.05,"Wittgenstein Centre WCDE v3.3, SSP2 (K.C. et al. 2024)",https://dataexplorer.wittgensteincentre.org/wcde-v3/
+Wittgenstein v3,25+,2020,5.26,40.43,"Wittgenstein Centre WCDE v3.3, SSP2 (K.C. et al. 2024)",https://dataexplorer.wittgensteincentre.org/wcde-v3/
+Wittgenstein v3,25+,2025,6.02,34.47,"Wittgenstein Centre WCDE v3.3, SSP2 (K.C. et al. 2024)",https://dataexplorer.wittgensteincentre.org/wcde-v3/

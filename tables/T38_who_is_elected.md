@@ -1,0 +1,7 @@
+**Table 38. The schooling of the people elected, 2021 communal elections**
+
+| Communes       |    N |   Councillors with no formal schooling |   Councillors with higher education |   Adults with no schooling |   Turnout 2021 |
+|:---------------|-----:|---------------------------------------:|------------------------------------:|---------------------------:|---------------:|
+| Urban communes |  255 |                                    0.3 |                                57.3 |                       27.2 |           33.3 |
+| Mixed          |  150 |                                    6.5 |                                28.5 |                       44.5 |           64.1 |
+| Rural communes | 1133 |                                   13.0 |                                23.2 |                       51.0 |           71.0 |
