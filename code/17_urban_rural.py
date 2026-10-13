@@ -13,6 +13,7 @@ Writes  data/clean/ext/commune_panel.csv.gz, province_elections.csv.gz,
 import os, json, re, unicodedata, glob
 import numpy as np, pandas as pd
 import statsmodels.formula.api as smf
+from tiers import tier_dir
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TAF = os.path.join(HERE, "..", "data", "raw", "tafra")
@@ -22,10 +23,11 @@ os.makedirs(OUT, exist_ok=True)
 KU = {}
 
 
+
 def table(name, df, cap, fmt=".1f"):
-    df.to_csv(os.path.join(TAB, f"{name}.csv"), index=False)
-    open(os.path.join(TAB, f"{name}.md"), "w").write(f"**{cap}**\n\n" + df.to_markdown(index=False, floatfmt=fmt) + "\n")
-    open(os.path.join(TAB, f"{name}.tex"), "w").write(
+    df.to_csv(os.path.join(tier_dir(TAB, name), f"{name}.csv"), index=False)
+    open(os.path.join(tier_dir(TAB, name), f"{name}.md"), "w").write(f"**{cap}**\n\n" + df.to_markdown(index=False, floatfmt=fmt) + "\n")
+    open(os.path.join(tier_dir(TAB, name), f"{name}.tex"), "w").write(
         df.to_latex(index=False, float_format=lambda x: f"{x:{fmt}}", caption=cap, label="tab:" + name, escape=True))
     print(f"  wrote {name}")
 

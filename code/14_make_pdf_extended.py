@@ -5,9 +5,11 @@ The .md source is not modified: substitutions happen on a temporary copy, and th
 to a temporary directory, checked, then moved into notes/ (Desktop sync once truncated a direct write).
 """
 import os, re, shutil, subprocess, tempfile
+from tiers import tpath
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, ".."))
+
 NOTES, FIG = os.path.join(ROOT, "notes"), os.path.join(ROOT, "figures")
 SRC, OUT = os.path.join(NOTES, "extended_analysis.md"), os.path.join(NOTES, "extended_analysis.pdf")
 
@@ -77,8 +79,8 @@ def preprocess(text):
     body = "\n".join(keep)
     # figures: never stranded at a page foot; absolute paths to the vector versions
     body = re.sub(r"^(!\[\]\(\.\./figures/)", r"\\Needspace{0.45\\textheight}\n\n\1", body, flags=re.M)
-    body = re.sub(r"\]\(\.\./figures/(F\d+_[A-Za-z_]+)\.png\)",
-                  lambda m: "](" + os.path.join(FIG, m.group(1) + ".pdf") + ")", body)
+    body = re.sub(r"\]\(\.\./figures/(?:facts/|models/)?(F\d+_[A-Za-z_]+)\.png\)",
+                  lambda m: "](" + tpath(FIG, m.group(1), "pdf") + ")", body)
     abstract = abstract.replace("$", "\\$")
     return abstract, body
 

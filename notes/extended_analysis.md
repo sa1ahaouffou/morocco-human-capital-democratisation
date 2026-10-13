@@ -79,7 +79,7 @@ A **ruling monarchy** is defined as a country-year in which the head of state re
 
 ### 3.1 A generational gap almost without precedent
 
-![](../figures/F13_generational_gap.png){width=100%}
+![](../figures/facts/F13_generational_gap.png){width=100%}
 
 In 2025, Moroccans aged 20–39 average 9.1 years of schooling; those aged 40–64 average 4.9. The gap of 4.2 years is the **fifth largest of 200 countries**. Only Bhutan (5.4), Yemen (5.1), Nepal (4.7) and Tunisia (4.2, marginally larger) exceed it, against a world median of 1.5 years (Table 14, Figure 13a). Measured as the difference in the share who never went to school (42.5% of the old against 10.4% of the young), the gap is 32 points, sixth in the world.
 
@@ -109,13 +109,13 @@ The comparison with the countries that motivated the original doubt is instructi
 
 ### 3.2 Education pyramids
 
-![](../figures/F14_education_pyramids.png){width=100%}
+![](../figures/facts/F14_education_pyramids.png){width=100%}
 
 The education pyramid, the standard Wittgenstein Centre representation, shows the shape behind the numbers (Figure 14). Morocco's unschooled adults are concentrated above age 40 and overwhelmingly among women. The shape is the one Korea had in 1985 and Tunisia in 2010, three and two years respectively before their transitions. The *magnitude* differs: 31% of Moroccan adults (20+) are unschooled, against 15% in Korea in 1985 and 25% in Tunisia in 2010. Bhutan democratised with twice Morocco's share, 62% in 2005. By 2050 the Moroccan pyramid (SSP2) is capped by an unschooled residue of old women and is otherwise a secondary-and-tertiary pyramid.
 
 ### 3.3 A late schooling revolution
 
-![](../figures/F15_birth_cohorts.png){width=100%}
+![](../figures/facts/F15_birth_cohorts.png){width=100%}
 
 Following each birth cohort's attainment, read at age 30–34, dates the schooling revolution itself (Figure 15, Table 15). The first Moroccan birth cohort in which a majority completed at least lower secondary was **born in 1992**. The equivalent cohorts were born in 1942 in Korea, 1944 in Spain, 1948 in Taiwan, 1947 in Jordan, 1966 in Algeria, 1969 in Egypt, Iran and Indonesia, and 1977 in Tunisia. **Among Moroccan women, no cohort has yet crossed the threshold**: 49% of women born in 1993 completed lower secondary. The first cohort in which fewer than a quarter never went to school was born in 1987. Among women, the unschooled share was still above 40% for cohorts born in the early 1980s (Figure 15b).
 
@@ -140,13 +140,13 @@ This dating recasts the East Asian comparison. The relevant difference between M
 
 ### 3.4 Cohort trajectories and the timing of transitions
 
-![](../figures/F19_cohort_trajectories.png){width=100%}
+![](../figures/facts/F19_cohort_trajectories.png){width=100%}
 
 Did transitions happen when the generational gap peaked? Not systematically (Figure 19). Spain, Portugal and Bhutan democratised *before* their gaps peaked; Korea, Taiwan, Indonesia and Tunisia *after*. Transitions occurred with gaps ranging from 2.2 years (Portugal 1976) to 4.1 years (Korea 1988). Morocco's gap is still widening: it peaks around 2035 on the central projection, as the 1990s and 2000s cohorts enter the 20–39 band while the unschooled cohorts of the 1960s still make up the 40–64 band.
 
 ### 3.5 Morocco's historical twins
 
-![](../figures/F16_historical_twins.png){width=100%}
+![](../figures/facts/F16_historical_twins.png){width=100%}
 
 Which democratisers looked most like Morocco does today? The 12 transitions nearest to Morocco 2025 were identified in the joint space of log GDP per capita, the schooling of the young and the schooling of the old, using standardised Euclidean distance. They are Mexico 1996, Uruguay 1985, Panama 1991, Cyprus 1975, Tunisia 2012, Greece 1975, South Africa 1995, Peru 1981, Türkiye 1990, Spain 1978, Indonesia 1999 and Jamaica 1984 (Table 16, Figure 16). **Eleven of the twelve democracies survived at least ten years**; only Tunisia's did not. Cyprus 1975 is the closest match on the cohort profile: a generational gap of 4.5 years, and 39% of 40–64-year-olds unschooled against Morocco's 42%.
 
@@ -172,7 +172,7 @@ The comparison does not say these countries' democratisation was *caused* by the
 
 ### 3.6 The unschooled stock is female
 
-![](../figures/F17_gender_age.png){width=100%}
+![](../figures/facts/F17_gender_age.png){width=100%}
 
 Disaggregating by sex locates the stock precisely (Table 17, Figure 17):
 
@@ -195,7 +195,7 @@ The male–female gap in the share with at least primary schooling (adults 25+) 
 
 ## 4. Demographic metabolism: a predetermined schedule
 
-![](../figures/F18_demographic_metabolism.png){width=100%}
+![](../figures/facts/F18_demographic_metabolism.png){width=100%}
 
 Lutz's (2013) theory of demographic metabolism predicts social change from the replacement of cohorts whose characteristics are fixed early in life. Educational attainment is the cleanest such characteristic: an adult's schooling is settled by age 25–30. For Morocco the theory yields a set of dates (Table 18, Figure 18):
 
@@ -230,7 +230,7 @@ Almost half of the adult population of 2050 has not yet reached adulthood. The e
 
 ### 5.1 The margin of education
 
-![](../figures/F20_which_margin.png){width=100%}
+![](../figures/models/F20_which_margin.png){width=100%}
 
 The first analysis replicated the finding of Acemoglu et al. (2005) that the cross-country correlation between education and democracy vanishes once country fixed effects absorb persistent national characteristics. The WCDE data allow the same exercise for each *margin* of the attainment distribution, in a 5-yearly panel of 162 countries, 1965–2025 (Table 20, Figure 20). Each regression has the V-Dem electoral democracy index at *t* on the left, and on the right the education measure at *t* − 5 (standardised), log GDP per capita at *t* − 5 and year effects. Three results emerge.
 
@@ -281,7 +281,7 @@ Morocco's gender gap (16.5 points) would, on the Barro coefficient, cost about 0
 
 ### 6.1 Who ever becomes a democracy?
 
-![](../figures/F21_hazard.png){width=100%}
+![](../figures/models/F21_hazard.png){width=100%}
 
 A level regression answers "how democratic?" The question for Morocco is "how likely is a transition?", which calls for a hazard model: the annual probability that an autocracy becomes an electoral democracy, given that it has not yet done so (Przeworski et al. 2000). The risk set consists of all autocracy-years 1961–2025, and it is strikingly heterogeneous (Table 22a):
 
@@ -369,7 +369,7 @@ Education *adds* to Morocco's hazard through the generational gap (+0.37), subje
 
 ### 6.4 The royal reference class
 
-![](../figures/F26_royal_reference_class.png){width=100%}
+![](../figures/facts/F26_royal_reference_class.png){width=100%}
 
 If the gate is the transfer of executive power, the relevant precedents are the monarchies that became democracies while keeping the monarch. V-Dem identifies 13 first transitions to electoral democracy with a hereditary head of state since 1900: Denmark 1902, Norway 1906, the Netherlands 1918, the United Kingdom and Luxembourg 1919, Belgium 1921, Sweden 1922, Japan 1952, Spain 1978, Lesotho 1993, Thailand 1998, Bhutan 2009 and Malaysia 2023 (Table 19, Figure 26).
 
@@ -409,7 +409,7 @@ The one dimension on which the European monarchies clearly outranked Morocco is 
 
 ### 7.1 Where the deficit sits
 
-![](../figures/F23_component_anatomy.png){width=100%}
+![](../figures/facts/F23_component_anatomy.png){width=100%}
 
 Morocco's electoral democracy index of 0.26 conceals a very uneven profile (Table 25, Figure 23). On **judicial constraints on the executive (0.77), legislative constraints (0.71) and the liberal component (0.72)**, Morocco already matches or exceeds the median democracy in its transition year (0.74, 0.70 and 0.72). It is far above the level its income and schooling predict (0.51–0.53).
 
@@ -438,7 +438,7 @@ And on **elected officials** it scores exactly zero. The chief executive is not 
 
 ### 7.2 The parliamentary-monarchy arithmetic
 
-![](../figures/F24_waterfall.png){width=100%}
+![](../figures/models/F24_waterfall.png){width=100%}
 
 Because V-Dem publishes its aggregation formula, the counterfactual that motivates this study can be computed exactly rather than estimated. The electoral democracy index is
 
@@ -472,7 +472,7 @@ This arithmetic describes the index, not politics. It says nothing about how suc
 
 ### 7.3 The demographic-educational expectation
 
-![](../figures/F22_structural_expectation.png){width=100%}
+![](../figures/models/F22_structural_expectation.png){width=100%}
 
 In the spirit of Lutz et al. (2010), a pooled 5-yearly model regresses the electoral democracy index on three variables with year effects, 1970–2025 (Table 24):
 
@@ -503,7 +503,7 @@ Morocco has been below its expectation in every year since 1970. The expectation
 
 ## 8. Education, opportunity and mobilisation: Campante and Chor revisited
 
-![](../figures/F25_schooling_opportunity.png){width=100%}
+![](../figures/models/F25_schooling_opportunity.png){width=100%}
 
 Campante and Chor (2012) argued that the Arab world was "poised for revolution" because schooling had expanded while labour-market opportunities had not. Their micro and macro evidence (Campante and Chor 2014) shows that educated individuals whose income falls short of what their characteristics predict are more likely to protest. Three tests on current data:
 
@@ -541,7 +541,7 @@ The mechanism may operate, as their micro evidence suggests, at the level of ind
 
 ### 9.1 Morocco among 39 African publics
 
-![](../figures/F28_afro_comparative.png){width=100%}
+![](../figures/models/F28_afro_comparative.png){width=100%}
 
 If Morocco's democratic deficit reflected a deficit of democratic *demand* — the intuition behind the original doubt — it should show up in survey data. It does not (Table 31, Figure 28).
 
@@ -556,7 +556,7 @@ There is also no evidence here that education's effect on democratic attitudes i
 
 ### 9.2 Schooling and generation within Morocco
 
-![](../figures/F27_afro_two_electorates.png){width=100%}
+![](../figures/facts/F27_afro_two_electorates.png){width=100%}
 
 Within Morocco, schooling and generation do not divide democratic attitudes the way the two-electorates hypothesis would suggest (Tables 29–30, Figure 27).
 

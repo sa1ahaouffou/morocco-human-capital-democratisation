@@ -4,6 +4,7 @@ the Moroccan census, and re-run the transition benchmark on the second dataset.
 """
 import os, json
 import numpy as np, pandas as pd, pyreadr
+from tiers import tier_dir
 
 HERE=os.path.dirname(os.path.abspath(__file__))
 RAW=os.path.join(HERE,"..","data","raw"); CLEAN=os.path.join(HERE,"..","data","clean")
@@ -94,10 +95,11 @@ R.to_csv(os.path.join(CLEAN,"benchmark_by_source.csv"), index=False)
 
 # ---- 5. Tables T8–T10 ------------------------------------------------------------
 TAB=os.path.join(HERE,"..","tables")
+
 def out(name, df, cap):
-    df.to_csv(os.path.join(TAB,f"{name}.csv"), index=False)
-    open(os.path.join(TAB,f"{name}.md"),"w").write(f"**{cap}**\n\n"+df.to_markdown(index=False, floatfmt=".1f")+"\n")
-    open(os.path.join(TAB,f"{name}.tex"),"w").write(df.to_latex(index=False, float_format=lambda x:"%.1f"%x,
+    df.to_csv(os.path.join(tier_dir(TAB, name), f"{name}.csv"), index=False)
+    open(os.path.join(tier_dir(TAB, name), f"{name}.md"),"w").write(f"**{cap}**\n\n"+df.to_markdown(index=False, floatfmt=".1f")+"\n")
+    open(os.path.join(tier_dir(TAB, name), f"{name}.tex"),"w").write(df.to_latex(index=False, float_format=lambda x:"%.1f"%x,
                                                               caption=cap, label="tab:"+name, escape=True))
 out("T8_source_contrast", M.round(2), "Table 8. Morocco's schooling stock measured by five independent sources")
 out("T9_benchmark_robustness", R.round(1), "Table 9. The transition benchmark re-run on a second dataset (Wittgenstein Centre v3.3)")

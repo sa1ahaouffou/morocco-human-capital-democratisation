@@ -17,14 +17,16 @@ FIG = os.path.join(HERE, "..", "figures"); TAB = os.path.join(HERE, "..", "table
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fab_style import *
+from tiers import tier_dir, tpath
 apply()
 LEVC = dict(LEVELS)
 LEVN = {"none": "No schooling", "incpri": "Incomplete primary", "pri": "Primary", "losec": "Lower secondary",
         "upsec": "Upper secondary", "post": "Post-secondary"}
 ORDER = list(LEVC)
 
+
 def save(fig, n):
-    for e in ("pdf", "png"): fig.savefig(os.path.join(FIG, f"{n}.{e}"))
+    for e in ("pdf", "png"): fig.savefig(os.path.join(tier_dir(FIG, n), f"{n}.{e}"))
     plt.close(fig); print("  wrote", n)
 def note(ax, s, y=-0.19, x=0):
     ax.annotate(s, xy=(x, y), xycoords="axes fraction", fontsize=7.4, color=MUTED, va="top", ha="left")
@@ -230,7 +232,7 @@ ax.annotate("Moroccan women, 2050 (SSP2)", xy=(57.5, float(np.interp(57.5, s_.in
 ax.set_xticks(range(20, 85, 10)); ax.set_xticklabels([f"{a_}–{a_+4}" if a_ < 80 else "80+" for a_ in range(20, 85, 10)])
 ax.set_xlim(19, 92); ax.set_ylim(0, 100); ax.grid(axis="y"); ax.set_axisbelow(True)
 ax.set_xlabel("Age group"); ax.set_ylabel("% who never went to school")
-T17 = pd.read_csv(os.path.join(TAB, "T17_gender_cohort.csv")).set_index("Band")
+T17 = pd.read_csv(tpath(TAB, "T17_gender_cohort", "csv")).set_index("Band")
 ax.set_title(f"$\\bf{{Figure\\ 17.}}$  The unschooled stock is overwhelmingly women over forty: {K['MAR_none_f_4064']:.0f}% of Moroccan women\n"
              f"aged 40–64 never went to school, against {K['MAR_none_m_4064']:.0f}% of men and "
              f"{T17.loc['40-64', 'Transitions: median % none, women']:.0f}% of women in the median transition",
@@ -250,7 +252,7 @@ a.set_xlim(1950, 2060); a.set_ylim(0, 100); a.set_ylabel("% of adults 25+")
 a.set_title("$\\bf{a.}$  Adults 25+ by schooling, 1950–2060", loc="left", fontweight="normal")
 a.annotate("no schooling", xy=(1985, 72), fontsize=8, color="white", fontweight="bold")
 a.annotate("post-secondary", xy=(2031, 92), fontsize=7.6, color="white", fontweight="bold")
-T18 = pd.read_csv(os.path.join(TAB, "T18_demographic_metabolism.csv"))
+T18 = pd.read_csv(tpath(TAB, "T18_demographic_metabolism", "csv"))
 for ax, (lab, band, col, thr_key) in zip([fig.add_subplot(gs[1]), fig.add_subplot(gs[2])],
                                          [("% no schooling, 25+", "25+", "none", 0), ("Mean years, 25+", "25+", "mys", 1)]):
     thr = float(T18.iloc[thr_key].Threshold)
@@ -338,8 +340,8 @@ save(fig, "F20_which_margin")
 
 # ============================================================ F21  hazard: what stands between Morocco and a transition
 mh = pd.read_csv(os.path.join(OUT, "morocco_hazard.csv"))
-T23 = pd.read_csv(os.path.join(TAB, "T23_morocco_hazard.csv"))
-T22a = pd.read_csv(os.path.join(TAB, "T22a_risk_set.csv"))
+T23 = pd.read_csv(tpath(TAB, "T23_morocco_hazard", "csv"))
+T22a = pd.read_csv(tpath(TAB, "T22a_risk_set", "csv"))
 fig, axes = plt.subplots(1, 2, figsize=(11.8, 4.6), gridspec_kw={"width_ratios": [1, 1.25], "wspace": 0.62})
 a = axes[0]
 rs = T22a.set_index(T22a.columns[0])
@@ -409,7 +411,7 @@ note(ax, "Expectation: pooled 5-yearly regressions of the index on % ≥ lower s
 save(fig, "F22_structural_expectation")
 
 # ============================================================ F23  component anatomy
-T25 = pd.read_csv(os.path.join(TAB, "T25_components.csv"))
+T25 = pd.read_csv(tpath(TAB, "T25_components", "csv"))
 T25 = T25[T25.Component != "Electoral democracy index"].iloc[::-1].reset_index(drop=True)
 fig, ax = plt.subplots(figsize=(9.2, 5.6))
 yy = np.arange(len(T25))
@@ -434,7 +436,7 @@ ax.set_title("$\\bf{Figure\\ 23.}$  The anatomy of the deficit: on judicial and 
 save(fig, "F23_component_anatomy")
 
 # ============================================================ F24  the waterfall
-T26 = pd.read_csv(os.path.join(TAB, "T26_counterfactuals.csv"))
+T26 = pd.read_csv(tpath(TAB, "T26_counterfactuals", "csv"))
 fig, ax = plt.subplots(figsize=(9.2, 4.8))
 ax.axhspan(0, 0.5, color="#FBFAF8", zorder=0); ax.axhspan(0.5, 0.8, color="#FAF2F2", zorder=0)
 ax.annotate("autocracy", xy=(4.35, 0.03), fontsize=8, color=MUTED, ha="right")

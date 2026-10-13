@@ -20,10 +20,12 @@ K=json.load(open(os.path.join(CLEAN,"key_numbers.json")))
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fab_style import *
+from tiers import tier_dir
 apply()
 
+
 def save(fig, name):
-    for ext in ("pdf","png"): fig.savefig(os.path.join(FIG,f"{name}.{ext}"))
+    for ext in ("pdf","png"): fig.savefig(os.path.join(tier_dir(FIG, name),f"{name}.{ext}"))
     plt.close(fig); print("  wrote", name)
 
 def note(ax, s, y=-0.19):

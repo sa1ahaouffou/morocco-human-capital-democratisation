@@ -15,6 +15,7 @@ from matplotlib.patches import Patch
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from fab_style import *          # noqa: F401,F403
+from tiers import tier_dir, tpath
 apply()
 
 OUT = os.path.join(HERE, "..", "data", "clean", "ext")
@@ -22,15 +23,16 @@ FIG = os.path.join(HERE, "..", "figures"); TAB = os.path.join(HERE, "..", "table
 P = pd.read_csv(os.path.join(OUT, "commune_panel.csv.gz"))
 L = pd.read_csv(os.path.join(OUT, "province_elections.csv.gz"))
 K = json.load(open(os.path.join(OUT, "key_numbers_urbanrural.json")))
-T33 = pd.read_csv(os.path.join(TAB, "T33_two_populations.csv"))
-T34 = pd.read_csv(os.path.join(TAB, "T34_four_corners.csv"))
-T37 = pd.read_csv(os.path.join(TAB, "T37_schooling_deciles.csv"))
-T38 = pd.read_csv(os.path.join(TAB, "T38_who_is_elected.csv"))
+T33 = pd.read_csv(tpath(TAB, "T33_two_populations", "csv"))
+T34 = pd.read_csv(tpath(TAB, "T34_four_corners", "csv"))
+T37 = pd.read_csv(tpath(TAB, "T37_schooling_deciles", "csv"))
+T38 = pd.read_csv(tpath(TAB, "T38_who_is_elected", "csv"))
+
 
 
 def save(fig, n):
     for e in ("pdf", "png"):
-        fig.savefig(os.path.join(FIG, f"{n}.{e}"))
+        fig.savefig(os.path.join(tier_dir(FIG, n), f"{n}.{e}"))
     plt.close(fig); print("  wrote", n)
 
 
@@ -113,7 +115,7 @@ fig.tight_layout(); save(fig, "F30_turnout_schooling")
 
 # ============================================================ F31  the gap at every election
 fig, ax = plt.subplots(figsize=(9.4, 5.0))
-T35 = pd.read_csv(os.path.join(TAB, "T35_turnout_every_election.csv"))
+T35 = pd.read_csv(tpath(TAB, "T35_turnout_every_election", "csv"))
 T35["yr"] = T35.Election.str.extract(r"(\d{4})").astype(int)
 T35["kind"] = np.where(T35.Election.str.startswith("Legislative"), "Legislative", "Communal")
 for kind, ls, mk in [("Legislative", "-", "o"), ("Communal", "--", "s")]:

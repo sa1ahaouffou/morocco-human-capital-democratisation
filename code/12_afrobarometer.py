@@ -17,6 +17,7 @@ Writes  data/clean/ext/afro_*.csv, tables/T29-T31
 import os, json, warnings
 import numpy as np, pandas as pd, pyreadstat
 import statsmodels.formula.api as smf
+from tiers import tier_dir
 warnings.filterwarnings("ignore")
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -24,10 +25,11 @@ EXT = os.path.join(HERE, "..", "data", "raw", "ext")
 OUT = os.path.join(HERE, "..", "data", "clean", "ext"); TAB = os.path.join(HERE, "..", "tables")
 KXF = os.path.join(OUT, "key_numbers_ext.json"); KX = json.load(open(KXF))
 
+
 def table(name, df, cap, fmt=".3f"):
-    df.to_csv(os.path.join(TAB, f"{name}.csv"), index=False)
-    open(os.path.join(TAB, f"{name}.md"), "w").write(f"**{cap}**\n\n" + df.to_markdown(index=False, floatfmt=fmt) + "\n")
-    open(os.path.join(TAB, f"{name}.tex"), "w").write(
+    df.to_csv(os.path.join(tier_dir(TAB, name), f"{name}.csv"), index=False)
+    open(os.path.join(tier_dir(TAB, name), f"{name}.md"), "w").write(f"**{cap}**\n\n" + df.to_markdown(index=False, floatfmt=fmt) + "\n")
+    open(os.path.join(tier_dir(TAB, name), f"{name}.tex"), "w").write(
         df.to_latex(index=False, float_format=lambda x: f"{x:{fmt}}", caption=cap, label="tab:" + name, escape=True))
     print(f"  wrote {name}")
 

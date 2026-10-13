@@ -9,6 +9,7 @@ Writes  data/clean/ext/*.csv, data/clean/ext/key_numbers_ext.json, tables/T14-T1
 """
 import os, json
 import numpy as np, pandas as pd, pyreadr
+from tiers import tier_dir
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RAW = os.path.join(HERE, "..", "data", "raw"); EXT = os.path.join(RAW, "ext")
@@ -23,10 +24,11 @@ M49 = dict(zip(pd.to_numeric(iso["country-code"], errors="coerce"), iso["alpha-3
 p = pd.read_csv(os.path.join(CLEAN, "panel.csv"), low_memory=False)
 NAME = p.dropna(subset=["country"]).drop_duplicates("iso3").set_index("iso3")["country"].to_dict()
 
+
 def table(name, df, cap, fmt=".1f"):
-    df.to_csv(os.path.join(TAB, f"{name}.csv"), index=False)
-    open(os.path.join(TAB, f"{name}.md"), "w").write(f"**{cap}**\n\n" + df.to_markdown(index=False, floatfmt=fmt) + "\n")
-    open(os.path.join(TAB, f"{name}.tex"), "w").write(
+    df.to_csv(os.path.join(tier_dir(TAB, name), f"{name}.csv"), index=False)
+    open(os.path.join(tier_dir(TAB, name), f"{name}.md"), "w").write(f"**{cap}**\n\n" + df.to_markdown(index=False, floatfmt=fmt) + "\n")
+    open(os.path.join(tier_dir(TAB, name), f"{name}.tex"), "w").write(
         df.to_latex(index=False, float_format=lambda x: f"{x:{fmt}}", caption=cap, label="tab:" + name, escape=True))
     print(f"  wrote {name}")
 

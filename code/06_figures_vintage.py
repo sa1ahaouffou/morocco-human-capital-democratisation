@@ -14,9 +14,11 @@ CLEAN=os.path.join(HERE,"..","data","clean"); FIG=os.path.join(HERE,"..","figure
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fab_style import *
+from tiers import tier_dir
 apply()
+
 def save(fig,n):
-    for e in ("pdf","png"): fig.savefig(os.path.join(FIG,f"{n}.{e}"))
+    for e in ("pdf","png"): fig.savefig(os.path.join(tier_dir(FIG, n),f"{n}.{e}"))
     plt.close(fig); print("  wrote",n)
 def note(ax,s,y=-0.19):
     ax.annotate(s, xy=(0,y), xycoords="axes fraction", fontsize=7.4, color=MUTED, va="top", ha="left")

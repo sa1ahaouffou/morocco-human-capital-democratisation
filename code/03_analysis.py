@@ -5,6 +5,7 @@ Writes markdown + LaTeX tables to ../tables and a JSON of headline numbers to ..
 import os, json
 import numpy as np, pandas as pd
 import statsmodels.api as sm
+from tiers import tier_dir
 
 HERE  = os.path.dirname(os.path.abspath(__file__))
 CLEAN = os.path.join(HERE,"..","data","clean"); TAB = os.path.join(HERE,"..","tables")
@@ -13,11 +14,12 @@ p = pd.read_csv(os.path.join(CLEAN,"panel.csv"))
 t = pd.read_csv(os.path.join(CLEAN,"transitions.csv"))
 K = {}
 
+
 def out(name, df, caption, floatfmt="%.2f"):
-    df.to_csv(os.path.join(TAB, name+".csv"), index=False)
-    with open(os.path.join(TAB, name+".md"),"w") as f:
+    df.to_csv(os.path.join(tier_dir(TAB, name), name+".csv"), index=False)
+    with open(os.path.join(tier_dir(TAB, name), name+".md"),"w") as f:
         f.write(f"**{caption}**\n\n" + df.to_markdown(index=False, floatfmt=".2f") + "\n")
-    with open(os.path.join(TAB, name+".tex"),"w") as f:
+    with open(os.path.join(tier_dir(TAB, name), name+".tex"),"w") as f:
         f.write(df.to_latex(index=False, float_format=lambda x: floatfmt % x,
                             caption=caption, label="tab:"+name, escape=True))
     print(f"\n### {caption}\n"); print(df.to_string(index=False))

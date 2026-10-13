@@ -5,6 +5,7 @@ education Gini (Figure 9), democratic survival, post-transition democracy level,
 """
 import os, json
 import numpy as np, pandas as pd, statsmodels.api as sm
+from tiers import tier_dir
 
 HERE=os.path.dirname(os.path.abspath(__file__))
 CLEAN=os.path.join(HERE,"..","data","clean"); TAB=os.path.join(HERE,"..","tables")
@@ -12,10 +13,11 @@ p=pd.read_csv(os.path.join(CLEAN,"panel.csv"), low_memory=False)
 t=pd.read_csv(os.path.join(CLEAN,"transitions.csv"))
 K={}
 
+
 def out(name, df, cap):
-    df.to_csv(os.path.join(TAB,name+".csv"), index=False)
-    open(os.path.join(TAB,name+".md"),"w").write(f"**{cap}**\n\n"+df.to_markdown(index=False, floatfmt=".3f")+"\n")
-    open(os.path.join(TAB,name+".tex"),"w").write(df.to_latex(index=False, float_format=lambda x:"%.3f"%x,
+    df.to_csv(os.path.join(tier_dir(TAB, name), name+".csv"), index=False)
+    open(os.path.join(tier_dir(TAB, name), name+".md"),"w").write(f"**{cap}**\n\n"+df.to_markdown(index=False, floatfmt=".3f")+"\n")
+    open(os.path.join(tier_dir(TAB, name), name+".tex"),"w").write(df.to_latex(index=False, float_format=lambda x:"%.3f"%x,
                                                             caption=cap, label="tab:"+name, escape=True))
     print(f"\n### {cap}\n"); print(df.to_string(index=False))
 
