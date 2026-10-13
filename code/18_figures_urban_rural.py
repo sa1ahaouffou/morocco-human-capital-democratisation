@@ -72,7 +72,7 @@ b.set_title("$\\bf{b.}$  The distance runs from urban men to rural women", loc="
 b.spines["left"].set_visible(False); b.tick_params(axis="y", length=0)
 b.annotate(f"{K['none_rural_women']:.0f}% against {K['none_urban_men']:.0f}%:\na factor of "
            f"{K['none_rural_women']/K['none_urban_men']:.1f}",
-           xy=(T34["No schooling"].iloc[3], 0), xytext=(34, 1.25), fontsize=8.6, color=FAB,
+           xy=(T34["No schooling"].iloc[3], 0), xytext=(43, 2.5), fontsize=8.6, color=FAB,
            fontweight="bold", ha="left",
            arrowprops=dict(arrowstyle="-", color=FAB, lw=0.8, shrinkA=0, shrinkB=6))
 note(a, "Source: RGPH 2014 (Haut-Commissariat au Plan), commune tables compiled by Tafra; "

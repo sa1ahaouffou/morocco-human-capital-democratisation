@@ -37,7 +37,7 @@ o=cmp15[cmp15.iso3!="MAR"]
 a.scatter(o.lu_mf, o.noed, s=20, c=NEUT, edgecolors="none", zorder=2)
 r=cmp15[cmp15.iso3=="MAR"].iloc[0]
 a.scatter([r.lu_mf],[r.noed], s=130, c=BLUE, marker="D", edgecolors="white", linewidths=1.5, zorder=4)
-a.annotate("MOROCCO", xy=(r.lu_mf,r.noed), xytext=(-9,2), textcoords="offset points",
+a.annotate("Morocco", xy=(r.lu_mf,r.noed), xytext=(-9,2), textcoords="offset points",
            fontsize=9, fontweight="bold", color=BLUE, ha="right")
 rho=cmp15[["lu_mf","noed"]].corr().iloc[0,1]
 a.annotate(f"r = {rho:.2f}\nmean |difference| = {(cmp15.lu_mf-cmp15.noed).abs().mean():.1f} pp\nN = {len(cmp15)} countries",

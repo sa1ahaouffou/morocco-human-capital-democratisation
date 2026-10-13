@@ -57,21 +57,33 @@ o = W.drop(index="MAR")
 a.scatter(o["mys_40-64"], o["mys_20-39"], s=15, c=NEUT, edgecolors="none", zorder=2)
 LB = {"BTN": (-5, 3), "YEM": (4, 3), "NPL": (-5, -10), "TUN": (5, -2), "SLE": (4, 3), "IND": (4, -9), "EGY": (-5, 2),
       "KOR": (-4, -10), "VNM": (4, -9), "DZA": (5, 2), "JOR": (5, -6)}
-for iso, (dx, dy) in LB.items():
-    r = W.loc[iso]; hi = iso in ("TUN", "BTN", "NPL", "YEM")
-    a.scatter(r["mys_40-64"], r["mys_20-39"], s=22, c=INK2, edgecolors="none", zorder=3)
-    a.annotate(NAME.get(iso, iso), xy=(r["mys_40-64"], r["mys_20-39"]), xytext=(dx, dy), textcoords="offset points",
-               fontsize=7.2, color=INK2, ha="right" if dx < 0 else "left", zorder=4)
+boxes_a = []
 r = W.loc["MAR"]
 a.scatter(r["mys_40-64"], r["mys_20-39"], s=120, c=BLUE, marker="D", edgecolors="white", linewidths=1.5, zorder=5)
-a.annotate(f"MOROCCO\ngap {r.gap_mys:.1f} yrs · rank {int(r.rank_gap_mys)} of {len(W)}", xy=(r["mys_40-64"], r["mys_20-39"]),
-           xytext=(0, 72), textcoords="offset points", fontsize=8.6, fontweight="bold", color=BLUE, ha="center",
-           arrowprops=dict(arrowstyle="-", color=BLUE, lw=0.8, shrinkA=2, shrinkB=6))
+reserve_point(a, (r["mys_40-64"], r["mys_20-39"]), boxes_a, r=10)
+reserve(halo(a.annotate(f"Morocco\ngap {r.gap_mys:.1f} yrs · rank {int(r.rank_gap_mys)} of {len(W)}",
+                        xy=(r["mys_40-64"], r["mys_20-39"]), xytext=(0, 72), textcoords="offset points",
+                        fontsize=8.6, fontweight="bold", color=BLUE, ha="center", zorder=6,
+                        arrowprops=dict(arrowstyle="-", color=BLUE, lw=0.8, shrinkA=2, shrinkB=6))), boxes_a, pad=2.5)
+for iso, (dx, dy) in LB.items():
+    rr = W.loc[iso]
+    a.scatter(rr["mys_40-64"], rr["mys_20-39"], s=22, c=INK2, edgecolors="none", zorder=3)
+    halo(place_label(a, (rr["mys_40-64"], rr["mys_20-39"]), NAME.get(iso, iso), boxes_a,
+                     cands=[(dx, dy, "right" if dx < 0 else "left", "baseline")] + list(CANDIDATES),
+                     fontsize=7.2, color=INK2, zorder=4), lw=2.2)
 a.set_ylabel("Mean years of schooling, aged 20–39")
 a.set_title(f"$\\bf{{a.}}$  {len(W)} countries in 2025", loc="left", fontweight="normal")
 b = axes[1]
 tc = TS.dropna(subset=["mys_20-39", "mys_40-64"])
 b.scatter(tc["mys_40-64"], tc["mys_20-39"], s=22, facecolors="white", edgecolors=MUTED, linewidths=0.8, zorder=2)
+boxes_b = []
+b.scatter(M25["mys_40-64"], M25["mys_20-39"], s=230, marker="*", c=BLUE, edgecolors="white", linewidths=1.4, zorder=5)
+reserve_point(b, (M25["mys_40-64"], M25["mys_20-39"]), boxes_b, r=10)
+reserve(halo(b.annotate(f"Morocco 2025\nyoung: {K['MAR_pct_mys_20-39']:.0f}th pct · old: {K['MAR_pct_mys_40-64']:.0f}th pct\n"
+                        f"gap: {K['MAR_pct_gap_mys']:.0f}th pct of transitions",
+                        xy=(M25["mys_40-64"], M25["mys_20-39"]), xytext=(-62, 52), textcoords="offset points",
+                        fontsize=8.4, fontweight="bold", color=BLUE, ha="center", zorder=6,
+                        arrowprops=dict(arrowstyle="-", color=BLUE, lw=0.8, shrinkA=2, shrinkB=8))), boxes_b, pad=2.5)
 for iso, yr, dx, dy in (("KOR", 1988, 5, -6), ("TWN", 1996, -5, 5), ("ESP", 1978, -5, -10), ("PRT", 1976, 5, -3),
                         ("TUN", 2012, 5, 2), ("IDN", 1999, 5, -4), ("CYP", 1975, -5, 4), ("MEX", 1996, -5, -6),
                         ("BTN", 2009, 5, 0)):
@@ -79,13 +91,9 @@ for iso, yr, dx, dy in (("KOR", 1988, 5, -6), ("TWN", 1996, -5, 5), ("ESP", 1978
     if not len(rr): continue
     rr = rr.iloc[0]
     b.scatter(rr["mys_40-64"], rr["mys_20-39"], s=26, c=ORANGE, edgecolors="none", zorder=3)
-    b.annotate(f"{NAME.get(iso, iso)} {yr}", xy=(rr["mys_40-64"], rr["mys_20-39"]), xytext=(dx, dy),
-               textcoords="offset points", fontsize=7.2, color=ORANGE, ha="right" if dx < 0 else "left", zorder=4)
-b.scatter(M25["mys_40-64"], M25["mys_20-39"], s=230, marker="*", c=BLUE, edgecolors="white", linewidths=1.4, zorder=5)
-b.annotate(f"MOROCCO 2025\nyoung: {K['MAR_pct_mys_20-39']:.0f}th pct · old: {K['MAR_pct_mys_40-64']:.0f}th pct\n"
-           f"gap: {K['MAR_pct_gap_mys']:.0f}th pct of transitions",
-           xy=(M25["mys_40-64"], M25["mys_20-39"]), xytext=(-62, 52), textcoords="offset points",
-           fontsize=8.4, fontweight="bold", color=BLUE, ha="center", arrowprops=dict(arrowstyle="-", color=BLUE, lw=0.8, shrinkA=2, shrinkB=8))
+    halo(place_label(b, (rr["mys_40-64"], rr["mys_20-39"]), f"{NAME.get(iso, iso)} {yr}", boxes_b,
+                     cands=[(dx, dy, "right" if dx < 0 else "left", "baseline")] + list(CANDIDATES),
+                     fontsize=7.2, color=ORANGE, zorder=4), lw=2.2)
 b.set_title(f"$\\bf{{b.}}$  {len(tc)} democratic transitions, at the moment of transition", loc="left", fontweight="normal")
 title(fig, "$\\bf{Figure\\ 13.}$  Few countries have ever carried a generational schooling gap as wide as Morocco's")
 note(a, "Distance above the diagonal = how much better schooled the 20–39 cohort is than the 40–64 cohort. Panel b places each transition\n"
@@ -155,7 +163,7 @@ for ax, var, sex, ttl in ((axes[0], "losec_plus", "Both", "a.  % with at least l
                     color=col, va="center", fontweight="bold")
     d = B[(B.iso3 == "MAR") & (B.sex == sex)].sort_values("birth")
     ax.plot(d.birth, d[var], color=BLUE, lw=2.6, zorder=3)
-    ax.annotate("MOROCCO", xy=(d.birth.iloc[-1], d[var].iloc[-1]), xytext=(4, 0), textcoords="offset points",
+    ax.annotate("Morocco", xy=(d.birth.iloc[-1], d[var].iloc[-1]), xytext=(4, 0), textcoords="offset points",
                 fontsize=8.6, color=BLUE, va="center", fontweight="bold")
     ax.set_xlim(1918, 2003); ax.set_ylim(0, 100); ax.grid(axis="y"); ax.set_axisbelow(True)
     ax.set_xlabel("Year of birth"); ax.set_title(ttl, loc="left", fontweight="normal")
@@ -174,7 +182,7 @@ save(fig, "F15_birth_cohorts")
 # ============================================================ F16  historical twins
 tw = pd.read_csv(os.path.join(OUT, "twins.csv")).head(12)
 fig, ax = plt.subplots(figsize=(8.6, 5.4))
-rows = [("MOROCCO 2025", M25["mys_40-64"], M25["mys_20-39"], np.nan, True)] + \
+rows = [("Morocco 2025", M25["mys_40-64"], M25["mys_20-39"], np.nan, True)] + \
        [(f"{NAME.get(r.iso3, r.country)} {int(r.year)}", r["mys_40-64"], r["mys_20-39"], r.surv10, False) for _, r in tw.iterrows()]
 for i, (lab, o_, y_, s_, mar) in enumerate(rows):
     yy = len(rows) - 1 - i
@@ -290,7 +298,7 @@ for ax, (iso, yr) in zip(axes.flat, TR.items()):
     gap = (y_ - o_).dropna(); pk = int(gap.idxmax()); PEAK[iso] = pk
     ax.annotate(f"gap peaks {pk}" + (" (projected)" if pk > 2020 else ""), xy=(0.02, 0.97), xycoords="axes fraction",
                 fontsize=7.4, color=MUTED, va="top")
-    ax.set_title(NAME.get(iso, iso) if iso != "MAR" else "MOROCCO", loc="left", fontweight="normal",
+    ax.set_title(NAME.get(iso, iso) if iso != "MAR" else "Morocco", loc="left", fontweight="normal",
                  color=BLUE if iso == "MAR" else INK)
     ax.set_xlim(1950, 2050); ax.set_ylim(0, 15.5); ax.grid(axis="y"); ax.set_axisbelow(True)
 for ax in axes[:, 0]: ax.set_ylabel("Mean years of schooling")
@@ -467,15 +475,18 @@ a = axes[0]
 o = cc[cc.mena == 0]; mn = cc[(cc.mena == 1) & (cc.index != "MAR")]
 a.scatter(o.dmys, o.dlgdp, s=16, c=NEUT, edgecolors="none")
 a.scatter(mn.dmys, mn.dlgdp, s=26, c=ORANGE, edgecolors="none")
-for iso in mn.index:
-    if iso in ("TUN", "EGY", "JOR", "DZA", "SYR", "LBN", "SAU", "IRN", "YEM", "IRQ", "LBY"):
-        a.annotate(NAME.get(iso, iso), xy=(mn.loc[iso, "dmys"], mn.loc[iso, "dlgdp"]), xytext=(4, 2), textcoords="offset points",
-                   fontsize=7, color=ORANGE)
 xx = np.linspace(cc.dmys.min(), cc.dmys.max(), 50)
 a.plot(xx, cc.dlgdp.mean() + K["cc_slope"] * (xx - cc.dmys.mean()), color=INK2, lw=1.0, ls=(0, (4, 2)))
+boxes_a = []
 r = cc.loc["MAR"]
 a.scatter(r.dmys, r.dlgdp, s=120, marker="D", c=BLUE, edgecolors="white", linewidths=1.4, zorder=5)
-a.annotate("MOROCCO", xy=(r.dmys, r.dlgdp), xytext=(7, -10), textcoords="offset points", fontsize=8.8, fontweight="bold", color=BLUE)
+reserve_point(a, (r.dmys, r.dlgdp), boxes_a, r=10)
+reserve(halo(a.annotate("Morocco", xy=(r.dmys, r.dlgdp), xytext=(7, -10), textcoords="offset points",
+                        fontsize=8.8, fontweight="bold", color=BLUE, zorder=6)), boxes_a, pad=2.5)
+for iso in mn.index:
+    if iso in ("TUN", "EGY", "JOR", "DZA", "SYR", "LBN", "SAU", "IRN", "YEM", "IRQ", "LBY"):
+        halo(place_label(a, (mn.loc[iso, "dmys"], mn.loc[iso, "dlgdp"]), NAME.get(iso, iso), boxes_a,
+                         fontsize=7, color=ORANGE, zorder=4), lw=2.2)
 a.axhline(0, color=INK2, lw=0.5)
 a.set_xlabel("Change in mean years of schooling, adults 25+, 2000–2020"); a.set_ylabel("Change in log GDP per capita (PPP), 2000–2020")
 a.grid(True); a.set_axisbelow(True)
@@ -488,16 +499,22 @@ b.scatter(np.log(um.gdp), um.ratio, s=26, c=ORANGE, edgecolors="none")
 SHORT = {"ARE": "UAE", "PSE": "Palestine", "SAU": "Saudi Arabia"}
 OFFB = {"TUN": (5, 5), "JOR": (-5, -9), "IRN": (5, 2), "IRQ": (5, -7), "ARE": (5, -2), "EGY": (5, 2), "OMN": (5, 0),
         "QAT": (5, 0), "SAU": (5, 0), "ISR": (5, 0), "PSE": (5, 0), "DJI": (5, 0), "LBN": (-6, -10)}
+boxes_b = []
+r = u.loc["MAR"]
+b.scatter(np.log(r.gdp), r.ratio, s=120, marker="D", c=BLUE, edgecolors="white", linewidths=1.4, zorder=5)
+reserve_point(b, (np.log(r.gdp), r.ratio), boxes_b, r=10)
+reserve(halo(b.annotate(f"Morocco: graduates {r.ratio:.1f}× as likely\nto be unemployed as the least educated",
+                        xy=(np.log(r.gdp), r.ratio), xytext=(np.log(3200), 13), textcoords="data",
+                        fontsize=8.2, fontweight="bold", color=BLUE, ha="center", zorder=6,
+                        arrowprops=dict(arrowstyle="-", color=BLUE, lw=0.8, shrinkB=7))), boxes_b, pad=2.5)
+reserve_span(b, (np.log(3200), 13), (np.log(r.gdp), r.ratio), boxes_b, w=2.5)   # keep names off the leader
 for iso in um.index:
     if iso != "MAR":
         dx, dy = OFFB.get(iso, (4, 2))
-        b.annotate(SHORT.get(iso, NAME.get(iso, iso)), xy=(np.log(um.loc[iso, "gdp"]), um.loc[iso, "ratio"]), xytext=(dx, dy),
-                   textcoords="offset points", fontsize=7, color=ORANGE, ha="right" if dx < 0 else "left")
-r = u.loc["MAR"]
-b.scatter(np.log(r.gdp), r.ratio, s=120, marker="D", c=BLUE, edgecolors="white", linewidths=1.4, zorder=5)
-b.annotate(f"MOROCCO: graduates {r.ratio:.1f}× as likely\nto be unemployed as the least educated", xy=(np.log(r.gdp), r.ratio),
-           xytext=(np.log(3200), 13), textcoords="data", fontsize=8.2, fontweight="bold", color=BLUE, ha="center",
-           arrowprops=dict(arrowstyle="-", color=BLUE, lw=0.8, shrinkB=7))
+        halo(place_label(b, (np.log(um.loc[iso, "gdp"]), um.loc[iso, "ratio"]),
+                         SHORT.get(iso, NAME.get(iso, iso)), boxes_b,
+                         cands=[(dx, dy, "right" if dx < 0 else "left", "baseline")] + list(CANDIDATES),
+                         fontsize=7, color=ORANGE, zorder=4), lw=2.2)
 b.axhline(1, color=INK2, lw=0.8, ls=(0, (4, 2)))
 b.annotate("equal unemployment", xy=(np.log(1100), 1.03), fontsize=7.4, color=MUTED)
 tk = [1000, 3000, 10000, 30000, 100000]; b.set_xticks(np.log(tk)); b.set_xticklabels([f"{v:,}" for v in tk])
@@ -528,7 +545,7 @@ ax.annotate(f"Bhutan 2009: {bt.mys:.1f} yrs,\n{bt.none_wcde:.0f}% unschooled\n(n
             textcoords="offset points", fontsize=7.6, color=ORANGE)
 mm = float(C[(C.ssp == 2) & (C.iso3 == "MAR") & (C.year == 2025) & (C.band == "25+") & (C.sex == "Both")].mys.iloc[0])
 ax.scatter(mm, np.log(8400.1), s=260, marker="*", c=BLUE, edgecolors="white", linewidths=1.4, zorder=5)
-ax.annotate(f"MOROCCO 2025\nmore schooled than {K['royal_pct_mys_below_MAR']:.0f}% and richer than\n{K['royal_pct_gdp_below_MAR']:.0f}% of these cases at their transition",
+ax.annotate(f"Morocco 2025\nmore schooled than {K['royal_pct_mys_below_MAR']:.0f}% and richer than\n{K['royal_pct_gdp_below_MAR']:.0f}% of these cases at their transition",
             xy=(mm, np.log(8400.1)), xytext=(10, 16), textcoords="offset points", fontsize=8.6, fontweight="bold", color=BLUE)
 tk = [2000, 4000, 8000, 16000, 32000]; ax.set_yticks(np.log(tk)); ax.set_yticklabels([f"{v:,}" for v in tk])
 ax.set_xlabel("Mean years of schooling at the transition"); ax.set_ylabel("GDP per capita at the transition (Maddison, 2011 $, log)")
@@ -575,9 +592,9 @@ for i, r in gg.iterrows():
     a.plot([(r.demand_edu - 1.96 * r.demand_edu_se) * 100, (r.demand_edu + 1.96 * r.demand_edu_se) * 100], [i, i],
            color=BLUE if mar else NEUT, lw=1.6 if mar else 1.0)
     a.scatter(r.demand_edu * 100, i, s=46 if mar else 16, c=BLUE if mar else INK2, zorder=3, marker="D" if mar else "o")
-a.set_yticks(range(len(gg))); a.set_yticklabels([("MOROCCO" if i_ == "MAR" else c_) for i_, c_ in zip(gg.iso3, gg.country)], fontsize=6.6)
+a.set_yticks(range(len(gg))); a.set_yticklabels([("Morocco" if i_ == "MAR" else c_) for i_, c_ in zip(gg.iso3, gg.country)], fontsize=6.6)
 for t_ in a.get_yticklabels():
-    if t_.get_text() == "MOROCCO": t_.set_color(BLUE); t_.set_fontweight("bold")
+    if t_.get_text() == "Morocco": t_.set_color(BLUE); t_.set_fontweight("bold")
 a.axvline(0, color=INK2, lw=0.6); a.set_xlabel("Education gradient in full demand for democracy\n(no schooling to postgraduate, percentage points)")
 a.set_title("$\\bf{a.}$  How much schooling raises democratic demand", loc="left", fontweight="normal")
 b = axes[1]
@@ -587,7 +604,7 @@ for _, r in g.iterrows():
         b.annotate(r.country, xy=(r.demand_mean * 100, r.polyarchy_2022), xytext=(4, 2), textcoords="offset points", fontsize=7, color=INK2)
 r = g[g.iso3 == "MAR"].iloc[0]
 b.scatter(r.demand_mean * 100, r.polyarchy_2022, s=120, marker="D", c=BLUE, edgecolors="white", linewidths=1.4, zorder=5)
-b.annotate("MOROCCO\naverage demand, low supply", xy=(r.demand_mean * 100, r.polyarchy_2022), xytext=(-10, -26),
+b.annotate("Morocco\naverage demand, low supply", xy=(r.demand_mean * 100, r.polyarchy_2022), xytext=(-10, -26),
            textcoords="offset points", fontsize=8.4, fontweight="bold", color=BLUE, ha="right")
 b.set_xlabel("Demand: % with full demand for democracy (Afrobarometer R9)"); b.set_ylabel("Supply: V-Dem electoral democracy index, 2022")
 b.grid(True); b.set_axisbelow(True)

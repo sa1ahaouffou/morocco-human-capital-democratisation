@@ -78,3 +78,85 @@ def figtitle(fig, number, title, subtitle=None, x=0.0, y=1.0):
     if subtitle:
         fig.text(x, y - 0.045, subtitle, ha="left", va="bottom",
                  fontsize=9.2, color=INK2, style="italic")
+
+
+# ---------------------------------------------------------------- label placement
+# A scatter of 150 countries cannot be labelled by hand: two labels at the same height
+# end up printed on top of each other (Morocco and Jordan in F1a, Poland and the Moroccan
+# cohort in F2). These two helpers measure the text that has actually been drawn and move
+# it out of the way, so no label ever lands on another.
+import matplotlib.patheffects as _pe
+from matplotlib.transforms import Bbox as _Bbox
+
+
+def halo(artist, lw=2.8, color="white"):
+    """Knock a white outline out from under text, so a label stays readable over the cloud."""
+    artist.set_path_effects([_pe.withStroke(linewidth=lw, foreground=color)])
+    return artist
+
+
+def _grow(bb, p):
+    return _Bbox.from_extents(bb.x0 - p, bb.y0 - p, bb.x1 + p, bb.y1 + p)
+
+
+def _overlap(a, b):
+    w = min(a.x1, b.x1) - max(a.x0, b.x0)
+    h = min(a.y1, b.y1) - max(a.y0, b.y0)
+    return w * h if w > 0 and h > 0 else 0.0
+
+
+def reserve_point(ax, xy, boxes, r=9.0):
+    """Keep a marker's own area free, not just the labels already drawn.
+
+    Without this a label slides under the Morocco marker, which is drawn on top of it
+    (Jordan sat beneath the diamond in F1a). r is a half-width in typographic points.
+    """
+    x, y = ax.transData.transform(xy)
+    rp = r * ax.figure.dpi / 72.0
+    boxes.append(_Bbox.from_extents(x - rp, y - rp, x + rp, y + rp))
+
+
+def reserve_span(ax, xy0, xy1, boxes, w=3.0):
+    """Keep a drawn line's corridor free, so no label is printed across it."""
+    (x0, y0), (x1, y1) = ax.transData.transform([xy0, xy1])
+    wp = w * ax.figure.dpi / 72.0
+    boxes.append(_Bbox.from_extents(min(x0, x1) - wp, min(y0, y1) - wp,
+                                    max(x0, x1) + wp, max(y0, y1) + wp))
+
+
+def reserve(artist, boxes, pad=1.5):
+    """Mark the space an already-placed label occupies, so later labels avoid it."""
+    boxes.append(_grow(artist.get_window_extent(artist.figure.canvas.get_renderer()), pad))
+    return artist
+
+
+# clockwise from the usual position: right, left, below-right, below-left, above, below
+CANDIDATES = [(5, 3, "left", "baseline"), (-5, 3, "right", "baseline"),
+              (5, -10, "left", "baseline"), (-5, -10, "right", "baseline"),
+              (0, 9, "center", "baseline"), (0, -15, "center", "baseline")]
+
+
+def place_label(ax, xy, text, boxes, cands=CANDIDATES, pad=1.5, **kw):
+    """Annotate xy at the first offset whose drawn text box hits nothing already placed.
+
+    boxes is the running list of occupied rectangles in display space; seed it with reserve()
+    for the labels that must not move. If every candidate collides the least-bad one is used,
+    so a country is never silently dropped. Axis limits must be final before calling: the
+    measurement happens in display space.
+    """
+    best = None
+    for dx, dy, ha, va in cands:
+        t = ax.annotate(text, xy=xy, xytext=(dx, dy), textcoords="offset points",
+                        ha=ha, va=va, **kw)
+        bb = _grow(t.get_window_extent(ax.figure.canvas.get_renderer()), pad)
+        ov = sum(_overlap(bb, b) for b in boxes)
+        if ov == 0:
+            boxes.append(bb)
+            return t
+        if best is None or ov < best[0]:
+            best = (ov, dx, dy, ha, va)
+        t.remove()
+    _, dx, dy, ha, va = best
+    t = ax.annotate(text, xy=xy, xytext=(dx, dy), textcoords="offset points",
+                    ha=ha, va=va, **kw)
+    return reserve(t, boxes, pad)
